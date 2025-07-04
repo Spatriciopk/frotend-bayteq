@@ -1,0 +1,37 @@
+<div class="user-card">
+  <!-- ENCABEZADO: Foto + Nombre + Rol + Logout -->
+  <div class="user-card-header">
+    <img class="user-picture" [src]="user.picture.large" alt="User Picture" />
+
+    <div class="user-info">
+      <h2 class="user-name">{{ user.name.first }} {{ user.name.last }}</h2>
+      <span class="user-role" [ngClass]="user.role">{{ user.role | titlecase }}</span>
+    </div>
+
+    <div class="logout-button-container">
+      <button class="logout-button" (click)="logout()">Cerrar Sesión</button>
+    </div>
+  </div>
+
+  <div class="separator-line"></div>
+
+  <!-- DETALLES PERSONALES -->
+  <div class="user-details">
+    <div class="detail-group">
+      <h3>Información Personal</h3>
+      <p><strong>Género:</strong> {{ user.gender | titlecase }}</p>
+      <p><strong>Email:</strong> {{ user.email }}</p>
+      <p><strong>Teléfono:</strong> {{ user.phone }}</p>
+      <p><strong>Celular:</strong> {{ user.cell }}</p>
+      <p><strong>Usuario:</strong> {{ user.username }}</p>
+    </div>
+
+    <div class="detail-group">
+      <h3>Ubicación</h3>
+      <p><strong>Ciudad:</strong> {{ user.location.city }}</p>
+      <p><strong>Estado:</strong> {{ user.location.state }}</p>
+      <p><strong>País:</strong> {{ user.location.country }}</p>
+      <p><strong>Código Postal:</strong> {{ user.location.postcode }}</p>
+    </div>
+  </div>
+</div>

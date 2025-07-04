@@ -1,0 +1,63 @@
+<div class="login-background">
+  <mat-card class="login-card">
+    <mat-card-title>Login</mat-card-title>
+
+    <form #loginForm="ngForm" (ngSubmit)="login(loginForm)" novalidate>
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Email</mat-label>
+        <input
+          matInput
+          name="username"
+          [(ngModel)]="username"
+          #usernameModel="ngModel"
+          required
+          type="email"
+          email
+        />
+      <mat-error *ngIf="usernameModel.invalid && usernameModel.touched">
+          <ng-container *ngIf="usernameModel.errors?.['required']">
+            El email es obligatorio
+          </ng-container>
+          <ng-container *ngIf="usernameModel.errors?.['email']">
+            El formato del email no es válido
+          </ng-container>
+        </mat-error>
+        
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Password</mat-label>
+        <input
+          matInput
+          name="password"
+          type="password"
+          [(ngModel)]="password"
+          #passwordModel="ngModel"
+          required
+        />
+        <mat-error *ngIf="passwordModel.invalid && passwordModel.touched">
+          La contraseña es obligatoria
+        </mat-error>
+      </mat-form-field>
+
+      <div class="actions">
+        <button
+          mat-raised-button
+          color="primary"
+          type="submit"
+          [disabled]="loginForm.invalid"
+        >
+          Login
+        </button>
+      </div>
+    </form>
+
+    <div class="signup">
+      <button mat-raised-button color="accent" type="button">
+        Sign up
+      </button>
+    </div>
+  </mat-card>
+</div>
+
+<ng-template #snackbarContainer></ng-template>

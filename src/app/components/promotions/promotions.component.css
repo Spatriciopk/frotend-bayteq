@@ -1,0 +1,116 @@
+.promotions-container {
+  padding: 20px;
+}
+
+.title {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.filter-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  gap: 20px; 
+}
+
+.filter-input {
+  padding: 0.5rem;
+  width: 300px;
+}
+
+.submit-btn {
+  padding: 0.5rem 1rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.submit-btn:hover {
+  background-color: #0056b3;
+}
+
+.product-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+.product-table th,
+.product-table td {
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  text-align: center;
+}
+
+.product-table input[type="number"],
+.product-table input[type="checkbox"] {
+  width: 80px;
+  padding: 4px;
+}
+
+
+span.edicion {
+  color: white;
+  background-color: #2196f3; 
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+span.en-gestion {
+  color: white;
+  background-color: #ff9800; 
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+span.aprobado {
+  color: white;
+  background-color: #4caf50; 
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+.no-data-label {
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 1.2rem;
+  color: #777;
+}
+
+.approve-btn {
+  background-color: #4CAF50; 
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.approve-btn:hover {
+  background-color: #388E3C;
+}
+
+.reject-btn {
+  background-color: #F44336; 
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.reject-btn:hover {
+  background-color: #D32F2F;
+}

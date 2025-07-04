@@ -1,0 +1,85 @@
+<div class="promotions-container">
+
+  <h2 class="title">GESTIÓN DE PROMOCIONES</h2>
+
+  <div class="filter-container" *ngIf="role === 'analyst'">
+    <input [(ngModel)]="filterText" placeholder="Filtrar productos por nombre" class="filter-input"/>
+    <button (click)="submitPromotions()" 
+            class="submit-btn" >Enviar lista de promos</button> 
+  </div>
+
+  <div class="filter-container" *ngIf="role === 'manager'">
+    <input [(ngModel)]="filterText" placeholder="Filtrar productos por nombre" class="filter-input"/>
+    <button class="submit-btn" (click)="approveAll()">APROBAR LISTA DE PROMOS</button> 
+    <button class="submit-btn" (click)="rejectAll()">ENVIAR A EDICIÓN</button> 
+  </div>
+
+  <table class="product-table" *ngIf="filteredProducts().length > 0">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th *ngIf="role === 'analyst'">Seleccionar </th>
+        <th>Nombre</th>
+        <th>Precio Lista</th>
+        <th>Cantidad Mín</th>
+        <th>Cantidad Máx</th>
+        <th>Precio Mín de Pro</th>
+        <th>Nuevo Precio Promoción</th>
+        <th>Estado</th>
+        <th *ngIf="role === 'manager'" >Aprobar</th>
+        <th *ngIf="role === 'manager'">Rechazar</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of filteredProducts()">
+        <td>{{ product.id }}</td>
+ 
+
+        <td *ngIf="role === 'analyst'">
+          <input
+            type="checkbox"
+            [disabled]="product.estado === 'EN GESTION' || product.estado === 'APROBADO'"
+            [checked]="isSelected(product.id)"
+            (change)="toggleSelection(product.id, product.estado)"
+          />
+        </td>
+        
+        <td>{{ product.name }}</td>
+        <td>{{ product.listPrice | currency:'USD' }}</td>
+
+        <td>
+          <input type="number" [(ngModel)]="product.minPromotionQuantity" [disabled]="product.estado === 'EN GESTION' || product.estado === 'APROBADO'" min="0" step="1" />
+        </td>
+        <td>
+          <input type="number" [(ngModel)]="product.maxPromotionQuantity" [disabled]="product.estado === 'EN GESTION' || product.estado === 'APROBADO'" min="0" step="1" />
+        </td>
+        <td>
+          <input type="number" [(ngModel)]="product.minPromotionPrice" [disabled]="product.estado === 'EN GESTION' || product.estado === 'APROBADO'" min="0.1"/>
+        </td>
+        
+        <td>
+          <input type="number" [(ngModel)]="product.precioPromocion" [disabled]="product.estado === 'EN GESTION' || product.estado === 'APROBADO'" min="0.1"/>
+        </td>
+
+
+        <td>
+          <span [ngClass]="getEstadoClass(product.estado)">
+            {{ product.estado }}
+          </span>
+        </td>
+
+      <td *ngIf="role === 'manager'">
+        <button class="approve-btn" (click)="cambiarEstado(product.id, 'aprobar')">Aprobar</button>
+      </td>
+      <td *ngIf="role === 'manager'">
+        <button class="reject-btn" (click)="cambiarEstado(product.id, 'rechazar')">Rechazar</button>
+      </td>
+      </tr>
+    </tbody>
+  </table>
+  <div *ngIf="filteredProducts().length === 0" class="no-data-label">
+    No existen promociones por revisar
+  </div>
+</div>
+
+<ng-template #snackbarContainer></ng-template>
