@@ -1,0 +1,24 @@
+/* error-snackbar.component.css */
+.snackbar-content {
+  color: black;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-radius: 8px;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 9999;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  min-width: 280px;
+}
+
+.snackbar-icon {
+  font-size: 24px;
+}
+
+.snackbar-text {
+  font-size: 16px;
+  flex-grow: 1;
+}
